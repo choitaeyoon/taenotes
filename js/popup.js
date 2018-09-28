@@ -1,11 +1,11 @@
-console.log("Running popup script...");
+console.log('Running popup script...');
 
 function listen(){
-    document.addEventListener("DOMContentLoaded", addNewNote);
+    document.addEventListener('DOMContentLoaded', addNewNote);
 }
 
 function addNewNote(){
-    document.getElementById("addNote").addEventListener("click",function(){
+    document.getElementById('addNote').addEventListener('click',function(){
         var newNote = document.getElementById('writeNote').value;
         var newInput = {
             note: newNote,
@@ -14,7 +14,7 @@ function addNewNote(){
         };
         insertNote(newInput);
     });
-    document.getElementById("seeNotes").addEventListener("click", function () {
+    document.getElementById('seeNotes').addEventListener('click', function () {
         location.href = 'seeNotes.html';
     })
 }
@@ -23,7 +23,7 @@ function insertNote(newNote) {
     var dbPromise = indexedDB.open('TaeNotes', 1);
 
     dbPromise.onerror = function (event) {
-        console.log("Error connecting to indexedDB");
+        console.log('Error connecting to indexedDB');
     };
 
     dbPromise.onupgradeneeded = function (event) {
@@ -32,7 +32,7 @@ function insertNote(newNote) {
             var notesOS = db.createObjectStore('notes', {
                 autoIncrement: true
             });
-            console.log("Object Store created");
+            console.log('Object Store created');
         }
     }
 
@@ -41,7 +41,7 @@ function insertNote(newNote) {
         var tx = db.transaction('notes', 'readwrite');
         var store = tx.objectStore('notes');
         store.add(newNote);
-        console.log("Added" + newNote);
+        console.log('Added' + newNote);
         return tx.complete;
     };
 
