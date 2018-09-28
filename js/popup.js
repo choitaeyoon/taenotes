@@ -1,11 +1,11 @@
 console.log('Running popup script...');
 
-function listen(){
+function listen() {
     document.addEventListener('DOMContentLoaded', addNewNote);
 }
 
-function addNewNote(){
-    document.getElementById('addNote').addEventListener('click',function(){
+function addNewNote() {
+    document.getElementById('addNote').addEventListener('click', function () {
         var newNote = document.getElementById('writeNote').value;
         var newInput = {
             note: newNote,
